@@ -26,6 +26,14 @@ else:
     save = input("Would you like to save your character(s)? (y/n)")
     if save == ("y"):
         print("Saving...")
+        f= open('Character.csv','w+')
+        f.write(strength +'\n')
+        f.write(agility +'\n')
+        f.write(stamina +'\n')
+        f.write(personality +'\n')
+        f.write(intelligence +'\n')
+        f.write(luck +'\n')
+        f.close()
         print("Saved!")
         print("Goodbye.")
 #add a way to save a character to a .csv
