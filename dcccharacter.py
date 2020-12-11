@@ -31,7 +31,7 @@ else:
     if save == ("y"):
         print("Saving...")
         f= open('Character.csv','w+')
-        f.write(name+ '\n')
+        f.write(name + '\n')
         f.write(strength +'\n')
         f.write(agility +'\n')
         f.write(stamina +'\n')
