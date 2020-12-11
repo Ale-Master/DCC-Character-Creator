@@ -1,4 +1,5 @@
 import random
+import nameGen
 import csv
 number = int(input("How many characters would you like to create?"))
 #d6 = random.randint(1,6)
@@ -16,6 +17,9 @@ for x in range(number):
     personality = ("Per = " + str(stat4))
     intelligence = ("Int = " + str(stat5))
     luck = ("Luc = " + str(stat6))
+    gender = int((random.randint(0,1)))
+    name = nameGen.generateName(gender)
+    print(str(name))
     print(strength)
     print(agility)
     print(stamina)
@@ -27,6 +31,7 @@ else:
     if save == ("y"):
         print("Saving...")
         f= open('Character.csv','w+')
+        f.write(name+ '\n')
         f.write(strength +'\n')
         f.write(agility +'\n')
         f.write(stamina +'\n')
