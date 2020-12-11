@@ -23,16 +23,16 @@ def generateName(gender):
         fName = ''
         lastName = ''
         while fName == '':
-            fName = (str(fNames[random.randint(0,len(fNames))]))
+            fName = (str(fNames[random.randint(0,len(fNames)-1)]))
         while lastName == '':
-            lastName = (str(lastNames[random.randint(0,len(lastNames))]))
+            lastName = (str(lastNames[random.randint(0,len(lastNames)-1)]))
         return str(fName + " " + lastName)
     else: 
         #generate male name
         mName = ''
         lastName = ''
         while mName == '':
-            mName = (str(mNames[random.randint(0,len(mNames))]))
+            mName = (str(mNames[random.randint(0,len(mNames)-1)]))
         while lastName == '':
-            lastName = (str(lastNames[random.randint(0,len(lastNames))]))
+            lastName = (str(lastNames[random.randint(0,len(lastNames)-1)]))
         return str(mName + " " +lastName)
