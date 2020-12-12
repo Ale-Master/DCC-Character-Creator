@@ -68,7 +68,7 @@ for x in range(number):
     elif stat3 == 3:
         stamod = '-3'
     #personality modifier
-    
+
     #end of modifier calculation
     print(str(name))
     print(strength)
@@ -100,3 +100,4 @@ else:
 #add a way to save a character to a .csv
     else:
         print("Goodbye.")
+        
