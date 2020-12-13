@@ -1,0 +1,21 @@
+Weapon,Damage,Range,Cost
+Battleaxe,1d8,,7 gp
+Blackjack,1d3,,3 gp
+Club,1d4,,3 gp
+Crossbow,1d6,80/160/240,30 gp
+Dagger,1d4,10/20/30,3 gp
+Dart,1d4,20/40/60,5 sp
+Flail,1d6,,6 gp
+Handaxe,1d6,10/20/30,4 gp
+Javelin,1d6,30/60/90,1 gp
+Longbow,1d6,70/240/210,40 gp
+Longsword,1d8,,10 gp
+Mace,1d6,,5 gp
+Polearm,1d10,,7 gp
+Shortbow,1d6,50/100/150,25 gp
+Short sword,1d6,,7 gp
+Sling,1d4,40/80/160,2 gp
+Spear,1d8,,3 gp
+Staff,1d4,,5 sp
+Two-handed sword,1d10,,15 gp
+Warhammer,1d6,,5 gp
