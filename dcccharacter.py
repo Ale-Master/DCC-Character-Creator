@@ -1,10 +1,9 @@
 import random
 import nameGen
 import csv
+import os
 number = int(input("How many characters would you like to create?"))
 #d6 = random.randint(1,6)
-with open('characterlist.csv', mode='w') as csv_file:
-    fieldnames = ['character files',]
 for x in range(number):
     #put in actual character generator
     stat1 = ((random.randint(1,6)) + (random.randint(1,6)) + (random.randint(1,6)))
@@ -21,7 +20,6 @@ for x in range(number):
     luck = ("Luc = " + str(stat6))
     gender = int((random.randint(0,1)))
     name = nameGen.generateName(gender)
-    #modifier calculation could be shrunk I'm sure...
     #strength modifier
     if stat1 == 18:
         strmod = '+3'
@@ -68,8 +66,50 @@ for x in range(number):
     elif stat3 == 3:
         stamod = '-3'
     #personality modifier
-
-    #end of modifier calculation
+    if stat4 == 18:
+        permod = '+3'
+    elif stat4 <= 17 and stat4 >= 16:
+        permod = '+2'
+    elif stat4 <= 15 and stat4 >= 13:
+        permod = '+1'
+    elif stat4 <= 12 and stat4 >= 9:
+        permod = '0'
+    elif stat4 <= 8 and stat4 >= 6:
+        permod = '-1'
+    elif stat4 <= 5 and stat4 >= 4:
+        permod = '-2'
+    elif stat4 == 3:
+        permod = '-3'
+    #intelligence modifier
+    if stat5 == 18:
+        intmod = '+3'
+    elif stat5 <= 17 and stat5 >= 16:
+        intmod = '+2'
+    elif stat5 <= 15 and stat5 >= 13:
+        intmod = '+1'
+    elif stat5 <= 12 and stat5 >= 9:
+        intmod = '0'
+    elif stat5 <= 8 and stat5 >= 6:
+        intmod = '-1'
+    elif stat5 <= 5 and stat5 >= 4:
+        intmod = '-2'
+    elif stat5 == 3:
+        intmod = '-3'
+    #luck modifier
+    if stat6 == 18:
+        lucmod = '+3'
+    elif stat6 <= 17 and stat6 >= 16:
+        lucmod = '+2'
+    elif stat6 <= 15 and stat6 >= 13:
+        lucmod = '+1'
+    elif stat6 <= 12 and stat6 >= 9:
+        lucmod = '0'
+    elif stat6 <= 8 and stat6 >= 6:
+        lucmod = '-1'
+    elif stat6 <= 5 and stat6 >= 4:
+        lucmod = '-2'
+    elif stat6 == 3:
+        lucmod = '-3'
     print(str(name))
     print(strength)
     print(agility)
@@ -77,27 +117,51 @@ for x in range(number):
     print(personality)
     print(intelligence)
     print(luck)
-    with open(name + '.csv', mode='w') as csv_file:
+    with open('data/newCharacters/' + name + '.csv', mode='w',newline='') as csv_file:
         fieldnames = ['stat_name', 'stat_value', 'stat_mod',]
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
         writer.writeheader()
-        writer.writerow({'stat_name': 'strength', 'stat_value': stat1, 'stat_mod': strmod, })
+        writer.writerow({'stat_name': 'strength', 'stat_value': stat1, 'stat_mod': strmod })
         writer.writerow({'stat_name': 'agility', 'stat_value': stat2, 'stat_mod': agimod })
-        writer.writerow({'stat_name': 'stamina', 'stat_value': stat3, })
-        writer.writerow({'stat_name': 'personality', 'stat_value': stat4, })
-        writer.writerow({'stat_name': 'intelligence', 'stat_value': stat5, })
-        writer.writerow({'stat_name': 'luck', 'stat_value': stat6, })
-    with open('characterlist.csv', 'a') as newFile:
-        newFileWriter = csv.writer(newFile)
-        newFileWriter.writerow([name + '.csv'])
+        writer.writerow({'stat_name': 'stamina', 'stat_value': stat3, 'stat_mod': stamod })
+        writer.writerow({'stat_name': 'personality', 'stat_value': stat4, 'stat_mod': permod })
+        writer.writerow({'stat_name': 'intelligence', 'stat_value': stat5, 'stat_mod': intmod })
+        writer.writerow({'stat_name': 'luck', 'stat_value': stat6, 'stat_mod': lucmod })
+    with open('data/newCharacters/characterlist.csv', 'a',newline='') as csv_file:
+        writer = csv.writer(csv_file)
+        writer.writerow({name + '.csv'})
 else:
-    save = input("Would you like to save your character(s)? (y/n)")
+    while True:
+        save = input("Would you like to save your character(s)? (y/n)")
+        if save == 'y':
+            end = 1
+        elif save == 'n':
+            end = 1
+        else:
+            end = 0
+        if not end == 1:
+            continue
+        else:
+            break
     if save == ("y"):
         print("Saving...")
+        f = open('data/newCharacters/characterlist.csv', 'r')
+        for x in range(number):
+            character = (f.readline())
+            os.rename('data/newCharacters/' + character.rstrip('\n'), 'data/savedCharacters/' + character.rstrip('\n'))
+        f.close()
+        os.remove ('data/newCharacters/characterlist.csv')
         print("Saved!")
         print("Goodbye.")
 #add a way to save a character to a .csv
-    else:
+    elif save == ('n'):
+        f = open('data/newCharacters/characterlist.csv', 'r')
+        for x in range(number):
+            character = (f.readline())
+            #path = ('data/newCharacters/' + character)
+
+            os.remove ('data/newCharacters/' + character.rstrip('\n'))
+        f.close()
+        os.remove ('data/newCharacters/characterlist.csv')
         print("Goodbye.")
-        
