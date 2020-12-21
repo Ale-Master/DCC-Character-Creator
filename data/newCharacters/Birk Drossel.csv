@@ -1,0 +1,7 @@
+stat_name,stat_value,stat_mod
+strength,11,0
+agility,10,0
+stamina,15,+1
+personality,4,-2
+intelligence,8,-1
+luck,12,0

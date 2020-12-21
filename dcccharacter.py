@@ -6,6 +6,32 @@ number = int(input("How many characters would you like to create?"))
 #d6 = random.randint(1,6)
 for x in range(number):
     #put in actual character generator
+    #make a method for dice rolls
+        #rollDice(int numOfDice, int numOfSides)
+            # statTotal = 0
+            # for x in range(numOfDice):
+            #     statTotal += random.randint(1,numOfSides)
+        #return statTotal
+
+        #evalMods(int statValue)
+        #    modValue = 0
+        #    if statValue == 18:
+            #     modValue = '+3'
+            # elif statValue <= 17 and statValue >= 16:
+            #     modValue = '+2'
+            # elif statValue <= 15 and statValue >= 13:
+            #     modValue = '+1'
+            # elif statValue <= 12 and statValue >= 9:
+            #     modValue = '0'
+            # elif statValue <= 8 and statValue >= 6:
+            #     modValue = '-1'
+            # elif statValue <= 5 and statValue >= 4:
+            #     modValue = '-2'
+            # elif statValue == 3:
+            #     modValue = '-3'
+        #return modValue
+
+
     stat1 = ((random.randint(1,6)) + (random.randint(1,6)) + (random.randint(1,6)))
     stat2 = int((random.randint(1,6)) + (random.randint(1,6)) + (random.randint(1,6)))
     stat3 = int((random.randint(1,6)) + (random.randint(1,6)) + (random.randint(1,6)))
@@ -19,8 +45,17 @@ for x in range(number):
     intelligence = ("Int = " + str(stat5))
     luck = ("Luc = " + str(stat6))
     gender = int((random.randint(0,1)))
+    #try:
     name = nameGen.generateName(gender)
+    #    continue
+   # except:
+       # print("failed name")
+        #if fails, will try again
+    
     #strength modifier
+        #strmod = evalMod(strength)
+        #agimod = evalMod(agility)
+    #use a case
     if stat1 == 18:
         strmod = '+3'
     elif stat1 <= 17 and stat1 >= 16:
@@ -110,8 +145,8 @@ for x in range(number):
         lucmod = '-2'
     elif stat6 == 3:
         lucmod = '-3'
-    print(str(name))
-    print(strength)
+    print(f"{name}, profession")
+    print(f"Str = {stat1}")
     print(agility)
     print(stamina)
     print(personality)
