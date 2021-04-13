@@ -1,8 +1,7 @@
 import random
+import nameGen
 import csv
 import os
-import nameGen
-import occupationGen
 
 num = int(input('How many characters would you like to generate?'))
 stats = ['strength', 'agility', 'stamina', 'personality', 'intelligence', 'luck']
@@ -12,13 +11,12 @@ mod_list = ['']
 for x in range(num):
     gender = random.randint(0, 1)
     name = nameGen.generateName(gender)
-    occupation = occupationGen.generate_occupation()
     stat_list = ['']
     mod_list = ['']
     y = 1
     print(name)
     with open('data/newCharacters/' + name + '.csv', mode='w', newline='') as csv_file:
-        fieldnames = ['stat_name', 'stat_value', 'stat_mod', 'occupation', 'trained_weapons', 'trade_goods' ]
+        fieldnames = ['stat_name', 'stat_value', 'stat_mod', ]
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
         writer.writeheader()
 
@@ -38,35 +36,3 @@ for x in range(num):
     with open('data/newCharacters/characterlist.csv', 'a', newline='') as csv_file:
         writer = csv.writer(csv_file)
         writer.writerow({name + '.csv'})
-else:
-    while True:
-        save = input("Would you like to save your character(s)? (y/n)")
-        if save == 'y':
-            end = 1
-        elif save == 'n':
-            end = 1
-        else:
-            end = 0
-        if not end == 1:
-            continue
-        else:
-            break
-    if save == ("y"):
-        print("Saving...")
-        f = open('data/newCharacters/characterlist.csv', 'r')
-        for x in range(num):
-            character = (f.readline())
-            os.rename('data/newCharacters/' + character.rstrip('\n'), 'data/savedCharacters/' + character.rstrip('\n'))
-        f.close()
-        os.remove ('data/newCharacters/characterlist.csv')
-        print("Saved!")
-        print("Goodbye.")
-    elif save == ('n'):
-        f = open('data/newCharacters/characterlist.csv', 'r')
-        for x in range(num):
-            character = (f.readline())
-
-            os.remove ('data/newCharacters/' + character.rstrip('\n'))
-        f.close()
-        os.remove ('data/newCharacters/characterlist.csv')
-        print("Goodbye.")
