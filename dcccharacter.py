@@ -2,7 +2,7 @@ import random
 import csv
 import os
 import nameGen
-import occupationGen
+#import occupationGen
 
 num = int(input('How many characters would you like to generate?'))
 stats = ['strength', 'agility', 'stamina', 'personality', 'intelligence', 'luck']
@@ -12,7 +12,7 @@ mod_list = ['']
 for x in range(num):
     gender = random.randint(0, 1)
     name = nameGen.generateName(gender)
-    occupation = occupationGen.generate_occupation()
+    #occupation = occupationGen.generate_occupation()
     stat_list = ['']
     mod_list = ['']
     y = 1
