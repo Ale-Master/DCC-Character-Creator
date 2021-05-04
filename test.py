@@ -1,15 +1,22 @@
-import random
+import random, csv, os
 import nameGen
-import csv
-import os
 
-class Table:
+class Character:
+    def __init__(self, name, stats, occupation, inventory):
+        self.name = name
+        self.stats = stats
+        self.occupation = occupation
+        self.inventory = inventory
 
-    def __init__(self, type, table_csv):
-        self.type = type
-        self.table_csv = table_csv
+class Dice:
+    def __init__(self, number, faces):
+        self.number = number
+        self.faces = faces
+    def roll(self):
+        random.randint(1, self.faces)
+        return
 
-    def roll(self, dice, number):
-
-Rolls = [Roll("stats", "stats.csv"),
-         ]
+class Stats:
+    def __init__(self):
+    def get_stats(self):
+        self.roll
