@@ -8,15 +8,27 @@ class Character:
         self.occupation = occupation
         self.inventory = inventory
 
-class Dice:
-    def __init__(self, number, faces):
+    def roll(self, number, faces):
         self.number = number
         self.faces = faces
-    def roll(self):
-        random.randint(1, self.faces)
-        return
+        result = 0
+        for x in range (0, number):
+            result = result + random.randint(1, faces)
+        return result
+    
+    def generate(self):
+        def getname():
+            roll.Name
 
-class Stats:
-    def __init__(self):
+class Tables(Character):
+    def __init__(self, name, file):
+        self.name = name
+        self.file = file
+
+class Stats(Character):
+    def __init__(self, strength, agility, stamina, personality, intelligence, luck):
+        self.strength = strength
+        self.agility = agility
+        self.stamina = 
     def get_stats(self):
         self.roll
